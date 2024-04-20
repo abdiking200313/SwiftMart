@@ -1,0 +1,131 @@
+﻿@page "/addproducts"
+
+@using Microsoft.AspNetCore.Mvc
+@using Microsoft.EntityFrameworkCore
+@using SwiftMart.Models
+@using SwiftMart.Data
+@using Microsoft.AspNetCore.Components.Forms
+
+@inject SWdbcontext dbContext
+
+<PageTitle>Uploading file</PageTitle>
+
+<h3>File Uploader</h3>
+
+<InputFile OnChange="HandleFileUpload" />
+<div>
+    <label>Name:</label>
+    <InputText @bind-Value="fileName"></InputText>
+</div>
+<div>
+    <label>Description:</label>
+    <InputText @bind-Value="fileDescription"></InputText>
+</div>
+
+@if (!string.IsNullOrEmpty(uploadMessage))
+{
+    <p>@uploadMessage</p>
+}
+
+@if (!string.IsNullOrEmpty(errorMessage))
+{
+    <p style="color: red;">@errorMessage</p>
+}
+
+@if (!string.IsNullOrEmpty(previewImageBase64))
+{
+    <img src="@previewImageBase64" alt="Preview" style="max-width: 300px; max-height: 300px;" />
+}
+
+@if (fileSelected)
+{
+    <button @onclick="AddFile">Add</button>
+}
+else
+{
+    <button disabled>Add</button>
+}
+
+@code {
+
+    IBrowserFile selectedFile;
+    string uploadMessage;
+    string errorMessage;
+    string fileName;
+    string fileDescription;
+    string previewImageBase64;
+    private float? amount4;
+    bool fileSelected = false;
+
+    [Inject] protected PreloadService preloadService { get; set; } = default!;
+    private async Task ShowSpinnerAsync(SpinnerColor spinnerColor)
+    {
+        preloadService.Show(spinnerColor);
+
+        await Task.Delay(3000); // call the service/api
+
+        preloadService.Hide();
+    }
+    async Task HandleFileUpload(InputFileChangeEventArgs e)
+    {
+        selectedFile = e.File;
+        var uploadedFileName = selectedFile.Name;
+
+        // Maximum allowed size: 20 MB
+        const long maxAllowedSize = 20971520; // 20 MB in bytes
+
+        try
+        {
+            var fileData = await GetFileData(selectedFile);
+
+            // Set the preview image
+            previewImageBase64 = $"data:image;base64,{Convert.ToBase64String(fileData)}";
+
+            fileSelected = true;
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Error uploading file: {ex.Message}";
+        }
+    }
+
+    async Task AddFile()
+    {
+        try
+        {
+            var fileData = await GetFileData(selectedFile);
+            var uploadedFileName = selectedFile.Name;
+
+            // Update database with file data
+            var newData = new Product
+                {
+                    Name = string.IsNullOrEmpty(fileName) ? uploadedFileName : fileName,
+                    Description = fileDescription,
+                    ImageData = fileData
+                };
+
+            // Save to the database
+            dbContext.Products.Add(newData);
+            await dbContext.SaveChangesAsync();
+
+            fileName = string.Empty;
+            fileDescription = string.Empty;
+            selectedFile = null;
+
+            
+            await ShowSpinnerAsync(SpinnerColor.Dark);
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Error uploading file: {ex.Message}";
+        }
+    }
+
+    async Task<byte[]> GetFileData(IBrowserFile file)
+    {
+        // Read the file content as a byte array
+        using var memoryStream = new MemoryStream();
+        await file.OpenReadStream().CopyToAsync(memoryStream);
+        return memoryStream.ToArray();
+    }
+}

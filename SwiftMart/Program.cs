@@ -1,3 +1,4 @@
+using Blazored.Toast;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
@@ -20,7 +21,14 @@ builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
 builder.Services.AddScoped<IEmailSender, SwiftMart.Data.Emailsender>();
-
+builder.Services.AddScoped<ShoppingCartService, ShoppingCartService>();
+builder.Services.AddBlazoredToast();
+builder.Services.AddBlazorBootstrap();
+builder.Services.Configure<IISServerOptions>(options =>
+{
+    // 100 MB
+    options.MaxRequestBodySize = 104857600;
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -1,3 +1,6 @@
+@import '_content/Blazor.Bootstrap/Blazor.Bootstrap.bundle.scp.css';
+@import '_content/Blazored.Toast/Blazored.Toast.bundle.scp.css';
+
 /* _content/SwiftMart/Shared/MainLayout.razor.rz.scp.css */
 .page[b-h3mohfmm9q] {
     position: relative;

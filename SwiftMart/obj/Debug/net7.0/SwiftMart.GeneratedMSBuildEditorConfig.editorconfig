@@ -22,8 +22,24 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Abdimalik/source/repos/SwiftMart/SwiftMart/Pages/AddProduct.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRkUHJvZHVjdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Abdimalik/source/repos/SwiftMart/SwiftMart/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Abdimalik/source/repos/SwiftMart/SwiftMart/Pages/ProductDetails.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZHVjdERldGFpbHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Abdimalik/source/repos/SwiftMart/SwiftMart/Pages/ProductList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZHVjdExpc3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Abdimalik/source/repos/SwiftMart/SwiftMart/Pages/ShoppingCart.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hvcHBpbmdDYXJ0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Abdimalik/source/repos/SwiftMart/SwiftMart/Shared/LoginDisplay.razor]

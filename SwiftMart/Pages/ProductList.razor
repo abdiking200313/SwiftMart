@@ -1,0 +1,91 @@
+﻿@page "/productlist"
+
+@using Microsoft.AspNetCore.Mvc
+@using Microsoft.EntityFrameworkCore
+@using SwiftMart.Data
+@using SwiftMart.Models
+@inject SWdbcontext dbContext
+@inject NavigationManager Navigation
+
+<h3>Product List</h3>
+
+@if (products != null && products.Any())
+{
+    <div class="row">
+        @foreach (var product in products)
+        {
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="card border-light mb-3" style="cursor: pointer;" @onclick="() => NavigateToProductDetails(product.Id.ToString())">
+                    @if (product.ImageData != null)
+                    {
+                        <img class="image" src="@($"data:image/png;base64,{Convert.ToBase64String(product.ImageData)}")" alt="Product Image" style="height: 200px; object-fit: scale-down; background-color:white" />
+                    }
+                    <div class="card-body">
+                        <h2 class="card-title">@product.Name</h2>
+                        <h3 class="price">@product.Price</h3>
+                        </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <p>No products found.</p>
+}
+
+@code {
+    List<Product> products;
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Retrieve products from the database
+        products = await dbContext.Products.ToListAsync();
+    }
+
+    private void NavigateToProductDetails(string productId)
+    {
+        Navigation.NavigateTo($"/products/{productId}");
+    }
+}
+
+
+
+
+<style>
+    .card:hover .image {
+        opacity: 0.1;
+    }
+
+    .card:hover .card-body {
+        opacity: 1;
+    }
+
+    .card-title {
+        position: absolute;
+        color: black;
+        font-size: 24px;
+        left: 50%;
+        top: 0;
+        transform: translateX(-50%); /* Center horizontally */
+    }
+
+    .card-body {
+        position: relative;
+        transition: .5s ease;
+        opacity: 0;
+        position: relative;
+        text-align: center;
+        font-family: Centaur;
+    }
+
+    .price {
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+        color: black;
+        font-size: 18px;
+    }
+</style>
+
+

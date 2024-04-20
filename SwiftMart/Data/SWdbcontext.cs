@@ -28,6 +28,10 @@ public partial class SWdbcontext : DbContext
 
     public virtual DbSet<AspNetUserToken> AspNetUserTokens { get; set; }
 
+    public virtual DbSet<CartItem> CartItems { get; set; }
+
+    public virtual DbSet<Product> Products { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseSqlServer("Data Source=LAPTOP-SNDAGHOD\\SQLEXPRESS;Initial Catalog=SwiftMart;Integrated Security=True;Trust Server Certificate=True");
@@ -58,6 +62,11 @@ public partial class SWdbcontext : DbContext
                         j.ToTable("AspNetUserRoles");
                         j.HasIndex(new[] { "RoleId" }, "IX_AspNetUserRoles_RoleId");
                     });
+        });
+
+        modelBuilder.Entity<CartItem>(entity =>
+        {
+            entity.HasOne(d => d.Product).WithMany(p => p.CartItems).HasConstraintName("FK_CartItem_Products");
         });
 
         OnModelCreatingPartial(modelBuilder);

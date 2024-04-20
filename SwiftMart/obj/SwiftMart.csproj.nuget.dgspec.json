@@ -49,6 +49,18 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "Blazor.Bootstrap": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Blazored.Toast": {
+              "target": "Package",
+              "version": "[4.2.1, )"
+            },
+            "BootstrapBlazor": {
+              "target": "Package",
+              "version": "[8.4.7, )"
+            },
             "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
               "target": "Package",
               "version": "[7.0.18, )"

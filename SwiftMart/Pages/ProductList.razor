@@ -1,4 +1,4 @@
-﻿@page "/productlist"
+﻿@page "/"
 
 @using Microsoft.AspNetCore.Mvc
 @using Microsoft.EntityFrameworkCore
@@ -7,7 +7,7 @@
 @inject SWdbcontext dbContext
 @inject NavigationManager Navigation
 
-<h3>Product List</h3>
+<PageTitle>Products</PageTitle>
 
 @if (products != null && products.Any())
 {
@@ -35,7 +35,7 @@ else
 }
 
 @code {
-    List<Product> products;
+    List<SwiftMart.Models.Product> products;
 
     protected override async Task OnInitializedAsync()
     {

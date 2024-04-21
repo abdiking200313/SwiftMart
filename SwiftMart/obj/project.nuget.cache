@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "GKipEwywS4FwnRs63M74dFbezlwlMzQIqAB+ydJ2GEI6R1akHH6FoZGyGhsZ0zJ4ZWfZEnQpKhZjvOWTYaCnIg==",
+  "dgSpecHash": "VIu6teIpGuBel2IglNxH6kMgCvAmV/YdY17C6PBKltEEJOqP+yE5E0+iBnuhiWfarRRfTtu4v9dSbSI5/FTOIA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Abdimalik\\source\\repos\\SwiftMart\\SwiftMart\\SwiftMart.csproj",
   "expectedPackageFiles": [
@@ -179,6 +179,7 @@
     "C:\\Users\\Abdimalik\\.nuget\\packages\\sqlitepclraw.core\\2.1.4\\sqlitepclraw.core.2.1.4.nupkg.sha512",
     "C:\\Users\\Abdimalik\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.1.4\\sqlitepclraw.lib.e_sqlite3.2.1.4.nupkg.sha512",
     "C:\\Users\\Abdimalik\\.nuget\\packages\\sqlitepclraw.provider.e_sqlite3\\2.1.4\\sqlitepclraw.provider.e_sqlite3.2.1.4.nupkg.sha512",
+    "C:\\Users\\Abdimalik\\.nuget\\packages\\stripe.net\\44.3.0\\stripe.net.44.3.0.nupkg.sha512",
     "C:\\Users\\Abdimalik\\.nuget\\packages\\system.appcontext\\4.3.0\\system.appcontext.4.3.0.nupkg.sha512",
     "C:\\Users\\Abdimalik\\.nuget\\packages\\system.buffers\\4.3.0\\system.buffers.4.3.0.nupkg.sha512",
     "C:\\Users\\Abdimalik\\.nuget\\packages\\system.codedom\\4.4.0\\system.codedom.4.4.0.nupkg.sha512",

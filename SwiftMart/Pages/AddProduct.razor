@@ -97,7 +97,7 @@ else
             var uploadedFileName = selectedFile.Name;
 
             // Update database with file data
-            var newData = new Product
+            var newData = new SwiftMart.Models.Product
                 {
                     Name = string.IsNullOrEmpty(fileName) ? uploadedFileName : fileName,
                     Description = fileDescription,

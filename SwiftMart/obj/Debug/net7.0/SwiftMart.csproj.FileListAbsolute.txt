@@ -301,3 +301,4 @@ C:\Users\Abdimalik\source\repos\SwiftMart\SwiftMart\bin\Debug\net7.0\Microsoft.E
 C:\Users\Abdimalik\source\repos\SwiftMart\SwiftMart\bin\Debug\net7.0\Microsoft.JSInterop.dll
 C:\Users\Abdimalik\source\repos\SwiftMart\SwiftMart\bin\Debug\net7.0\BlazorBootstrap.dll
 C:\Users\Abdimalik\source\repos\SwiftMart\SwiftMart\bin\Debug\net7.0\BootstrapBlazor.dll
+C:\Users\Abdimalik\source\repos\SwiftMart\SwiftMart\bin\Debug\net7.0\Stripe.net.dll

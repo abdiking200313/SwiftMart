@@ -57,9 +57,9 @@ else
 @code {
     [Parameter]
     public string productId { get; set; }
-    private Product? product1;
+    private SwiftMart.Models.Product? product1;
     private string message = "";
-    private List<Product> Products { get; set; }
+    private List<SwiftMart.Models.Product> Products { get; set; }
 
 
     protected override async Task OnInitializedAsync()
@@ -69,7 +69,7 @@ else
             product1 = await dbContext.Products.FindAsync(id);
         }
     }
-    private void AddToCart(Product product)
+    private void AddToCart(SwiftMart.Models.Product product)
     {
         cartService.AddToCart(product.Id, 1);
         toastService.ShowSuccess($"{product.Name} has been added to your cart");

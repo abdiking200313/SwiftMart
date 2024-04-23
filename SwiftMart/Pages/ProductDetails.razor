@@ -1,0 +1,78 @@
+﻿@page "/products/{productId}"
+
+@using Microsoft.AspNetCore.Mvc
+@using Microsoft.EntityFrameworkCore
+@using SwiftMart.Data
+@using SwiftMart.Models
+@inject SWdbcontext dbContext
+@inject NavigationManager Navigation
+@inject ShoppingCartService cartService
+@inject IToastService toastService 
+<PageTitle>Productdetail</PageTitle>
+
+@if (product1 != null)
+{
+    <div class="row">
+        <div class="col-lg-6">
+            <img class="image" src="@($"data:image/png;base64,{Convert.ToBase64String(product1.ImageData)}")" alt="Product Image" />
+        </div>
+        <div class="col-lg-6">
+            <dl class="row">
+                <dt class="col-sm-3">Name:</dt>
+                <dd class="col-sm-9">@product1.Name</dd>
+
+                <dt class="col-sm-3">Price:</dt>
+                <dd class="col-sm-9">@product1.Price</dd>
+
+                <dt class="col-sm-3">Description:</dt>
+                <dd class="col-sm-9">@product1.Description</dd>
+
+                <div class="col-sm-12">
+                    <button class="btn btn-info" @onclick="() =>  AddToCart (product1)">Add to Cart</button>
+                </div>
+            </dl>
+        </div>
+    </div>
+}
+else
+{
+    <p>Product not found.</p>
+}
+@if (!string.IsNullOrEmpty(message))
+{
+    <p>@message</p>
+}
+
+<style>
+    .image {
+        height: 100%;
+        max-width: 100%;
+    }
+
+    .row{
+        font-size:35px;
+    }
+
+</style>
+@code {
+    [Parameter]
+    public string productId { get; set; }
+    private SwiftMart.Models.Product? product1;
+    private string message = "";
+    private List<SwiftMart.Models.Product> Products { get; set; }
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (int.TryParse(productId, out int id))
+        {
+            product1 = await dbContext.Products.FindAsync(id);
+        }
+    }
+    private void AddToCart(SwiftMart.Models.Product product)
+    {
+        cartService.AddToCart(product.Id, 1);
+        toastService.ShowSuccess($"{product.Name} has been added to your cart");
+    }
+
+}

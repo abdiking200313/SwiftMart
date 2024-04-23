@@ -1,0 +1,37 @@
+﻿@page "/payment-succes"
+@using Stripe.Checkout
+<h3>PaymentSucces</h3>
+
+<h2>Hi @_customerName,</h2>
+<p>Thank you for making payment</p>
+
+@if (!string.IsNullOrEmpty(message))
+{
+    <p>@message</p>
+}
+
+@code {
+    [SupplyParameterFromQuery (Name ="session-id")]
+    public string CheckoutSessionId { get; set; }
+    private string _customerName = string.Empty;
+
+    private string message = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            var sessionService = new SessionService();
+            var session = await sessionService.GetAsync(CheckoutSessionId);
+
+            if(session.CustomerDetails != null && !string.IsNullOrEmpty(session.CustomerDetails.Name))
+            {
+                            _customerName = session.CustomerDetails.Name;
+            }
+
+        }catch(Exception e)
+        {
+            message = $"{e.Message}";
+        }
+    }
+}

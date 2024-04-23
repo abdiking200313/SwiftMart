@@ -1,0 +1,105 @@
+﻿@page "/shoppingcart"
+
+@using Stripe.Checkout
+@using SwiftMart.Data
+@using SwiftMart.Models
+@inject SWdbcontext dbContext
+@inject ShoppingCartService cartService
+@inject NavigationManager navigationmanager 
+@inject IToastService toastService
+<h3>Shopping Cart</h3>
+
+@if (cartService.GetCartItems().Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in cartService.GetCartItems())
+            {
+                <tr>
+                    <td>@item.Product.Name</td>
+                    <td>@item.Product.Price</td>
+                    <td>@item.Quantity</td>
+                    <td>@(item.Product.Price * item.Quantity)</td>
+                    <td>
+                        <button class="btn btn-danger" @onclick="() => RemoveFromCart(item.Product.Id)">Remove</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div class="text-end">
+        <strong>Total: @cartService.GetTotalPrice()</strong>
+
+        <form method="post" @onsubmit="CheckOutAsync">
+            <button type="submit" id="checkout-button" class="btn btn-primary">Checkout</button>
+        </form>
+
+    </div>
+}
+else
+{
+    <p>Your shopping cart is empty.</p>
+}
+@if (!string.IsNullOrEmpty(error))
+{
+    <p style="color: red;">@error</p>
+}
+@code {
+    string error = "";
+
+    private async Task CheckOutAsync()
+    {
+        try
+        {
+            var domain = navigationmanager.BaseUri.TrimEnd('/');
+
+            var _lineItems = cartService.ShoppingCart.Select(p => new SessionLineItemOptions
+                {
+                    Quantity = p.Quantity,
+                    PriceData = new SessionLineItemPriceDataOptions
+                    {
+                        Currency = "eur",
+                        UnitAmountDecimal = p.Product.Price * 100,
+                        ProductData = new SessionLineItemPriceDataProductDataOptions
+                        {
+                            Name = p.Product.Name
+                        }
+
+                    }
+                }).ToList();
+            var options = new SessionCreateOptions
+                {
+                    LineItems = _lineItems,
+                    Mode = "payment",
+                    SuccessUrl = domain + "/payment-succes?session-id={CHECKOUT_SESSION_ID}",
+                    CancelUrl = domain + "/shoppingcart" 
+                };
+
+            var service = new SessionService();
+            Session session = await service.CreateAsync(options);
+
+            navigationmanager.NavigateTo(session.Url);
+        }
+        catch(Exception ex)
+        {
+            error = $"{ex.Message}";
+        }
+
+    } 
+    private void RemoveFromCart(int productId)
+    {
+        cartService.RemoveFromCart(productId);
+        toastService.ShowInfo($"removed from cart");
+
+    }
+}

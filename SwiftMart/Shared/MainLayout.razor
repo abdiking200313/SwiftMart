@@ -3,21 +3,37 @@
 <PageTitle>SwiftMart</PageTitle>
 
 <div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
 
     <main>
-        <div class="top-row px-4 auth">
-            <LoginDisplay />
-            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
+        <div class="navbar bg-base-300 h-100">
+            <div>
+                <a class="flex-1">SwiftMart</a>
+            </div>
+            <div class="flex-none">
+                <div class="dropdown dropdown-end">
+                <AuthorizeView>
+                    <Authorized>
+                        <li class="btn btn-ghost text-xl"><a href="Identity/Account/Manage">Hello, @context.User.Identity?.Name!</a></li>
+                        <form method="post" action="Identity/Account/Logout">
+                            <li><button type="submit">Log out</button></li>
+                        </form>
+                    </Authorized>
+                    <NotAuthorized>
+                        <li class ="btn btn-ghost text-xl"><a href="Identity/Account/Register">Register</a></li>
+                        <li class="btn btn-ghost text-xl"><a href="Identity/Account/Login">Log in</a></li>
+                    </NotAuthorized>
+                </AuthorizeView>
+            </div>
+            <li class="btn btn-ghost text-xl"><a href="addproducts">Add products</a></li>
+            <li class="btn btn-ghost text-xl"><a href="shoppingcart">card</a></li>
+            </div>
         </div>
-
         <article class="content px-4">
             @Body
         </article>
     </main>
 </div>
+
 <BlazoredToasts Position="Blazored.Toast.Configuration.ToastPosition.TopRight"
     Timeout="4"
     IconType="Blazored.Toast.Configuration.IconType.FontAwesome"

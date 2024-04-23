@@ -1,12 +1,10 @@
-﻿using Blazored.Toast.Services;
-using SwiftMart.Models;
+﻿using SwiftMart.Models;
 
 namespace SwiftMart.Data
 {
     public class ShoppingCartService
     {
         private readonly SWdbcontext _dbContext;
-        IToastService toastService;
         public List<CartItem> ShoppingCart { get; private set; } = new List<CartItem>();
 
         public event Action OnCartUpdated;

@@ -5,14 +5,6 @@
       "PackagePath": "staticwebassets\\SwiftMart.bundle.scp.css"
     },
     {
-      "Id": "C:\\Users\\Abdimalik\\source\\repos\\SwiftMart\\SwiftMart\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
-      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css"
-    },
-    {
-      "Id": "C:\\Users\\Abdimalik\\source\\repos\\SwiftMart\\SwiftMart\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
-      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css.map"
-    },
-    {
       "Id": "C:\\Users\\Abdimalik\\source\\repos\\SwiftMart\\SwiftMart\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
       "PackagePath": "staticwebassets\\css\\open-iconic"
     },
@@ -55,6 +47,14 @@
     {
       "Id": "C:\\Users\\Abdimalik\\source\\repos\\SwiftMart\\SwiftMart\\wwwroot\\favicon.png",
       "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "C:\\Users\\Abdimalik\\source\\repos\\SwiftMart\\SwiftMart\\wwwroot\\site.css",
+      "PackagePath": "staticwebassets\\site.css"
+    },
+    {
+      "Id": "C:\\Users\\Abdimalik\\source\\repos\\SwiftMart\\SwiftMart\\wwwroot\\tailwind-app.css",
+      "PackagePath": "staticwebassets\\tailwind-app.css"
     },
     {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.SwiftMart.Microsoft.AspNetCore.StaticWebAssets.props",

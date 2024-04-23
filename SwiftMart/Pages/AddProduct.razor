@@ -48,13 +48,12 @@ else
 
 @code {
 
-    IBrowserFile selectedFile;
-    string uploadMessage;
-    string errorMessage;
-    string fileName;
-    string fileDescription;
-    string previewImageBase64;
-    private float? amount4;
+    IBrowserFile? selectedFile;
+    string uploadMessage = "";
+    string? errorMessage;
+    string? fileName;
+    string? fileDescription;
+    string? previewImageBase64;
     bool fileSelected = false;
 
     [Inject] protected PreloadService preloadService { get; set; } = default!;

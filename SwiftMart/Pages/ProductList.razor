@@ -7,26 +7,35 @@
 @inject SWdbcontext dbContext
 @inject NavigationManager Navigation
 
-<PageTitle>Products</PageTitle>
+<PageTitle>Swift Mart</PageTitle>
+
+
 
 @if (products != null && products.Any())
 {
-    <div class="row">
+    <div class="grid grid-cols-3 gap-4">    
+
         @foreach (var product in products)
         {
-            <div class="col-lg-3 col-md-6 mb-4">
-                <div class="card border-light mb-3" style="cursor: pointer;" @onclick="() => NavigateToProductDetails(product.Id.ToString())">
+        <div class="card card-compact w-96 bg-base-100 shadow-xl">
+                <div    class="card border-light mb-3" style="cursor: pointer;" @onclick="() => NavigateToProductDetails(product.Id.ToString())">
                     @if (product.ImageData != null)
                     {
-                        <img class="image" src="@($"data:image/png;base64,{Convert.ToBase64String(product.ImageData)}")" alt="Product Image" style="height: 200px; object-fit: scale-down; background-color:white" />
+                        <div class="max-h-48 w-32">
+                    <img class="transform motion-safe:hover:scale-110" src="@($"data:image/png;base64,{Convert.ToBase64String(product.ImageData)}")" alt="Product Image" />
+                    </div>
+
                     }
                     <div class="card-body">
                         <h2 class="card-title">@product.Name</h2>
-                        <h3 class="price">@product.Price</h3>
+                        <div class="card-action justify-center-end">
+                        <h3 class="price">$ @product.Price</h3>
+                        </div>
                         </div>
                 </div>
             </div>
         }
+
     </div>
 }
 else
@@ -49,43 +58,5 @@ else
     }
 }
 
-
-
-
-<style>
-    .card:hover .image {
-        opacity: 0.1;
-    }
-
-    .card:hover .card-body {
-        opacity: 1;
-    }
-
-    .card-title {
-        position: absolute;
-        color: black;
-        font-size: 24px;
-        left: 50%;
-        top: 0;
-        transform: translateX(-50%); /* Center horizontally */
-    }
-
-    .card-body {
-        position: relative;
-        transition: .5s ease;
-        opacity: 0;
-        position: relative;
-        text-align: center;
-        font-family: Centaur;
-    }
-
-    .price {
-        position: absolute;
-        right: 10px;
-        bottom: 10px;
-        color: black;
-        font-size: 18px;
-    }
-</style>
 
 

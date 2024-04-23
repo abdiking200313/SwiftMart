@@ -302,3 +302,5 @@ C:\Users\Abdimalik\source\repos\SwiftMart\SwiftMart\bin\Debug\net7.0\Microsoft.J
 C:\Users\Abdimalik\source\repos\SwiftMart\SwiftMart\bin\Debug\net7.0\BlazorBootstrap.dll
 C:\Users\Abdimalik\source\repos\SwiftMart\SwiftMart\bin\Debug\net7.0\BootstrapBlazor.dll
 C:\Users\Abdimalik\source\repos\SwiftMart\SwiftMart\bin\Debug\net7.0\Stripe.net.dll
+C:\Users\Abdimalik\source\repos\SwiftMart\SwiftMart\bin\Debug\net7.0\package-lock.json
+C:\Users\Abdimalik\source\repos\SwiftMart\SwiftMart\bin\Debug\net7.0\package.json

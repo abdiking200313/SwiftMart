@@ -4,18 +4,19 @@
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <base href="~/" />
-    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
+
     <link href="css/site.css" rel="stylesheet" />
     <link href="SwiftMart.styles.css" rel="stylesheet" />
     <link rel="icon" type="image/png" href="favicon.png"/>
+    <link rel="stylesheet" href="~/css/site.css" />
     <component type="typeof(HeadOutlet)" render-mode="ServerPrerendered" />
 </head>
-<body>
+<body class="container mx-auto">
     <component type="typeof(App)" render-mode="ServerPrerendered" />
 
     <div id="blazor-error-ui">

@@ -1,0 +1,6 @@
+{
+  "devDependencies": {
+    "daisyui": "^4.10.2",
+    "eslint": "^9.1.1"
+  }
+}

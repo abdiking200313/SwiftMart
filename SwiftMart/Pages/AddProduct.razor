@@ -8,10 +8,69 @@
 
 @inject SWdbcontext dbContext
 
-<PageTitle>Uploading file</PageTitle>
+<PageTitle>New Product</PageTitle>
 
-<h3>File Uploader</h3>
+<div class="h-full mt-60 mx-40">
 
+    <div class="border-b-2 block md:flex">
+
+        <div class="w-full md:w-2/4 p-4 sm:p-6 lg:p-8 bg-white shadow-md">
+            <div class="items-center">
+                <span class="text-xl font-semibold block mb-5">Add a perfume</span>
+            </div>
+
+
+
+            <div class="w-full min-h-60 items-center">
+                <InputFile OnChange="HandleFileUpload" />
+                @if (!string.IsNullOrEmpty(previewImageBase64))
+                {
+                    <img src="@previewImageBase64" alt="Preview" class="h-80" />
+                }
+            </div>
+
+
+        </div>
+
+        <div class="w-full md:w-2/4 p-8 bg-white lg:ml-4 shadow-md">
+            <div class="rounded  shadow p-6 bg-base-100">
+                <div class="grid grid-cols-2">
+                    <div class="pb-6 font-semibold text-gray-700 block pb-1 bg-base-10">
+                        <label for="name" class="font-semibold text-gray-700 block pb-1">Name</label>
+                        <div class="flex border-1  rounded-r px-4 py-2 w-ful">
+                            <input id="name" class="border-1 rounded-r px-4 py-2 w-full" @bind-value="fileName" placeholder="Name of the perfume"></input>
+
+                        </div>
+                    </div>
+                    <div class="pb-6 font-semibold text-gray-700 block pb-1 bg-base-10">
+                        <label for="name" class="font-semibold text-gray-700 block pb-1">Price</label>
+                        <div class="flex border-1  rounded-r px-4 py-2 w-ful">
+                            <input id="name" class="border-1 rounded-r px-4 py-2 w-full" @bind-value="perfumePrice" />
+                        </div>
+                    </div>
+                </div>
+                <div class="pb-4">
+                    <label for="about" class="font-semibold text-gray-700 block pb-1">Description</label>
+                    <input id="message" rows="4" class="border-gray-600 border-solid rounded-r px-4 py-2 w-full" @bind-value="fileDescription" placeholder="Describe the perfume"></input>
+                </div>
+                <div class="flex justify-between">
+                    <button class="btn btn-succes" @onclick="AddFile">Add</button>
+                    <button class="btn btn-danger" @onclick="Reset">Reset</button>
+
+                </div>
+            </div>
+            @if (!string.IsNullOrEmpty(uploadMessage))
+            {
+                <p>@uploadMessage</p>
+            }
+        </div>
+    </div>
+
+</div>
+@* @if (!string.IsNullOrEmpty(uploadMessage))
+{
+    <p>@uploadMessage</p>
+}
 <InputFile OnChange="HandleFileUpload" />
 <div>
     <label>Name:</label>
@@ -45,7 +104,7 @@ else
 {
     <button disabled>Add</button>
 }
-
+ *@
 @code {
 
     IBrowserFile selectedFile;
@@ -53,26 +112,18 @@ else
     string errorMessage;
     string fileName;
     string fileDescription;
+    decimal perfumePrice;
     string previewImageBase64;
-    private float? amount4;
     bool fileSelected = false;
 
-    [Inject] protected PreloadService preloadService { get; set; } = default!;
-    private async Task ShowSpinnerAsync(SpinnerColor spinnerColor)
-    {
-        preloadService.Show(spinnerColor);
 
-        await Task.Delay(3000); // call the service/api
-
-        preloadService.Hide();
-    }
     async Task HandleFileUpload(InputFileChangeEventArgs e)
     {
         selectedFile = e.File;
         var uploadedFileName = selectedFile.Name;
 
-        // Maximum allowed size: 20 MB
-        const long maxAllowedSize = 20971520; // 20 MB in bytes
+
+        const long maxAllowedSize = 20971520;
 
         try
         {
@@ -87,39 +138,36 @@ else
         {
             errorMessage = $"Error uploading file: {ex.Message}";
         }
+
     }
 
     async Task AddFile()
     {
-        try
-        {
-            var fileData = await GetFileData(selectedFile);
-            var uploadedFileName = selectedFile.Name;
 
-            // Update database with file data
-            var newData = new SwiftMart.Models.Product
-                {
-                    Name = string.IsNullOrEmpty(fileName) ? uploadedFileName : fileName,
-                    Description = fileDescription,
-                    ImageData = fileData
-                };
+        var fileData = await GetFileData(selectedFile);
+        var uploadedFileName = selectedFile.Name;
 
-            // Save to the database
-            dbContext.Products.Add(newData);
-            await dbContext.SaveChangesAsync();
+        var newData = new SwiftMart.Models.Product
+            {
+                Name = string.IsNullOrEmpty(fileName) ? uploadedFileName : fileName,
+                Description = fileDescription,
+                ImageData = fileData,
+                Price = perfumePrice
+            };
 
-            fileName = string.Empty;
-            fileDescription = string.Empty;
-            selectedFile = null;
+        dbContext.Products.Add(newData);
+        await dbContext.SaveChangesAsync();
 
-            
-            await ShowSpinnerAsync(SpinnerColor.Dark);
-        }
-        catch (Exception ex)
-        {
-            errorMessage = $"Error uploading file: {ex.Message}";
-        }
+        fileName = string.Empty;
+        fileDescription = string.Empty;
+        selectedFile = null;
+        perfumePrice = 0;
+        fileSelected = false;
+
+        uploadMessage = $"File '{uploadedFileName}' uploaded successfully!";
+
     }
+
 
     async Task<byte[]> GetFileData(IBrowserFile file)
     {
@@ -128,4 +176,14 @@ else
         await file.OpenReadStream().CopyToAsync(memoryStream);
         return memoryStream.ToArray();
     }
+
+    async Task Reset()
+    {
+        fileName = string.Empty;
+        fileDescription = string.Empty;
+        selectedFile = null;
+        perfumePrice = 0;
+        fileSelected = false;
+    }
+
 }

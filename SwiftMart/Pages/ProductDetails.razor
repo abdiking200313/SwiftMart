@@ -1,5 +1,4 @@
 ﻿@page "/products/{productId}"
-
 @using Microsoft.AspNetCore.Mvc
 @using Microsoft.EntityFrameworkCore
 @using SwiftMart.Data
@@ -7,32 +6,41 @@
 @inject SWdbcontext dbContext
 @inject NavigationManager Navigation
 @inject ShoppingCartService cartService
-@inject IToastService toastService 
-<PageTitle>Productdetail</PageTitle>
-
+@inject IToastService toastService
+<PageTitle>@product1.Name</PageTitle>
 @if (product1 != null)
 {
-    <div class="row">
-        <div class="col-lg-6">
-            <img class="image" src="@($"data:image/png;base64,{Convert.ToBase64String(product1.ImageData)}")" alt="Product Image" />
-        </div>
-        <div class="col-lg-6">
-            <dl class="row">
-                <dt class="col-sm-3">Name:</dt>
-                <dd class="col-sm-9">@product1.Name</dd>
-
-                <dt class="col-sm-3">Price:</dt>
-                <dd class="col-sm-9">@product1.Price</dd>
-
-                <dt class="col-sm-3">Description:</dt>
-                <dd class="col-sm-9">@product1.Description</dd>
-
-                <div class="col-sm-12">
-                    <button class="btn btn-info" @onclick="() =>  AddToCart (product1)">Add to Cart</button>
+    <div class=" min-w-screen h-[calc(100vh-96px)] bg-base-300 flex items-center p-5 lg:p-10 overflow-hidden relative">
+        <div class="w-full max-w-6xl rounded bg-white shadow-xl p-10 lg:p-20 mx-auto text-gray-800 relative md:text-left">
+            <div class="md:flex items-center -mx-10">
+                <div class="w-full md:w-1/2 px-10 mb-10 md:mb-0">
+                    <div class="relative bg-base-100">
+                        <img class="" src="@($"data:image/png;base64,{Convert.ToBase64String(product1.ImageData)}")" alt="Product Image" />
+                    </div>
                 </div>
-            </dl>
+                <div class="w-full md:w-1/2 px-10">
+                    <div class="mb-10">
+                        <h3 class="font-bold uppercase text-2xl mb-5">@product1.Name</h3>
+                        <p class="text-sm">@product1.Description</p>
+
+                        @*                     <button class="bg-yellow" @onclick="() =>  AddToCart (product1)">Add to cart</button> *@
+                    </div>
+                    <div class="inline-block align-bottom mr-5">
+                        <span class="text-2xl leading-none align-baseline">$</span>
+                        <span class="font-bold text-5xl leading-none align-baseline">@product1.Price</span>
+                    </div>
+                    <div class="inline-block align-bottom">
+                        <button class="bg-yellow-300 opacity-75 hover:opacity-100 text-yellow-900 hover:text-gray-900 rounded-full px-10 py-2 font-semibold" @onclick="() =>  AddToCart (product1)">
+                            <i class=" mdi mdi-cart -ml-2 mr-2">
+                            </i>
+                            BUY NOW
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
 }
 else
 {
@@ -43,25 +51,12 @@ else
     <p>@message</p>
 }
 
-<style>
-    .image {
-        height: 100%;
-        max-width: 100%;
-    }
-
-    .row{
-        font-size:35px;
-    }
-
-</style>
 @code {
     [Parameter]
     public string productId { get; set; }
     private SwiftMart.Models.Product? product1;
     private string message = "";
     private List<SwiftMart.Models.Product> Products { get; set; }
-
-
     protected override async Task OnInitializedAsync()
     {
         if (int.TryParse(productId, out int id))
@@ -74,5 +69,4 @@ else
         cartService.AddToCart(product.Id, 1);
         toastService.ShowSuccess($"{product.Name} has been added to your cart");
     }
-
 }

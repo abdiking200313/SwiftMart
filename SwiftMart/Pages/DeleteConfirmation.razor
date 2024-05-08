@@ -1,0 +1,12 @@
+﻿
+<h3>You are not logged in.</h3>
+<h3>Please login or register as guest.</h3>
+<hr />
+
+<div class="mt-4 flex justify-between mx-5">
+    <a class="" href="Identity/Account/Login">Login</a>
+    <a href="guessregister">Continue as guest</a>
+</div>
+@code {
+    [CascadingParameter] public IModalService Modal { get; set; }
+}

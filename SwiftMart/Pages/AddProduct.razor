@@ -67,44 +67,6 @@
     </div>
 
 </div>
-@* @if (!string.IsNullOrEmpty(uploadMessage))
-{
-    <p>@uploadMessage</p>
-}
-<InputFile OnChange="HandleFileUpload" />
-<div>
-    <label>Name:</label>
-    <InputText @bind-Value="fileName"></InputText>
-</div>
-<div>
-    <label>Description:</label>
-    <InputText @bind-Value="fileDescription"></InputText>
-</div>
-
-@if (!string.IsNullOrEmpty(uploadMessage))
-{
-    <p>@uploadMessage</p>
-}
-
-@if (!string.IsNullOrEmpty(errorMessage))
-{
-    <p style="color: red;">@errorMessage</p>
-}
-
-@if (!string.IsNullOrEmpty(previewImageBase64))
-{
-    <img src="@previewImageBase64" alt="Preview" style="max-width: 300px; max-height: 300px;" />
-}
-
-@if (fileSelected)
-{
-    <button @onclick="AddFile">Add</button>
-}
-else
-{
-    <button disabled>Add</button>
-}
- *@
 @code {
 
     IBrowserFile selectedFile;
@@ -183,7 +145,7 @@ else
         fileDescription = string.Empty;
         selectedFile = null;
         perfumePrice = 0;
-        fileSelected = false;
+        previewImageBase64 = null;
     }
 
 }

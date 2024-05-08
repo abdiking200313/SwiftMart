@@ -1,105 +1,187 @@
-﻿@page "/shoppingcart"
+﻿    @page "/shoppingcart"
 
-@using Stripe.Checkout
-@using SwiftMart.Data
-@using SwiftMart.Models
-@inject SWdbcontext dbContext
-@inject ShoppingCartService cartService
-@inject NavigationManager navigationmanager 
-@inject IToastService toastService
-<h3>Shopping Cart</h3>
+    @using Stripe.Checkout
+    @using SwiftMart.Data
+    @using SwiftMart.Models
+    @using SwiftMart.Pages
+    @inject SWdbcontext dbContext
+    @inject ShoppingCartService cartService
+    @inject NavigationManager navigationmanager
+    @inject IToastService toastService
+    @inject AuthenticationStateProvider AuthenticationStateProvider
+    @inject IModalService modalService
+<PageTitle>ShoppinCart</PageTitle>
 
 @if (cartService.GetCartItems().Any())
 {
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Product</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Total</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
+    <div class="flex flex-column">
+        <div class=" w-3/5 ">
+            <table class="table table-zebra">
+                <thead>
+                    <tr class="font-bold text-lg">
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in cartService.GetCartItems())
+                    {
+                        <tr class="text-lg align-items-center">
+
+                            <td class="flex flex-column">
+                                @if (item.Product.ImageData != null)
+                                {
+                                    <img src="@($"data:image/png;base64,{Convert.ToBase64String(item.Product.ImageData)}")" alt="product-image" class=" rounded-lg h-20" />
+                                }<p class="my-8 ml-5">@item.Product.Name</p>
+                            </td>
+                            <td>@item.Product.Price</td>
+                            <td>
+@*                                 <button class="btn btn-sm btn-secondary" @onclick="()=>DecreaseQuantity(item.Product.Id)">-</button> *@
+                                <button class="w-6 h-6 self-center rounded-full border border-gray-300 mx-2" @onclick="()=>DecreaseQuantity(item.Product.Id)">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M5 12h14" />
+                                    </svg>
+                                </button>
+                                <span>@item.Quantity</span>
+                                <button class="w-6 h-6 self-center rounded-full border border-gray-300 mx-2" @onclick="()=>IncreaseQuantity(item.Product.Id)">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="" stroke="#9ca3af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M12 5v14M5 12h14" />
+                                    </svg>
+                                </button>
+@*                                 <button class="btn btn-sm btn-secondary" @onclick="()=>IncreaseQuantity(item.Product.Id)">+</button> *@
+                            </td>
+                            <td>
+                                <button @onclick="@(() => RemoveFromCart(item.Product.Id))">Remove</button>
+                            </td>
+
+                        </tr>
+
+                            
+
+                    }
+                </tbody>
+
+            </table>
+
+        </div>
+        <div class="mt-6 h-full rounded-lg border bg-white p-6 shadow-md w-1/5 flex-1 mx-10">
             @foreach (var item in cartService.GetCartItems())
             {
-                <tr>
-                    <td>@item.Product.Name</td>
-                    <td>@item.Product.Price</td>
-                    <td>@item.Quantity</td>
-                    <td>@(item.Product.Price * item.Quantity)</td>
-                    <td>
-                        <button class="btn btn-danger" @onclick="() => RemoveFromCart(item.Product.Id)">Remove</button>
-                    </td>
-                </tr>
+                <div class="flex justify-between">
+                    <p class="text-gray-700">@item.Product.Name</p>
+                    <p class="text-gray-700">@(item.Product.Price * item.Quantity)</p>
+                </div>
             }
-        </tbody>
-    </table>
+                <hr class="my-4" />
+                <div class="flex justify-between">
+                    <p class="text-lg font-bold">Total</p>
+                <div class="">
+                    <p class="mb-1 text-lg font-bold">$ @cartService.GetTotalPrice()</p>
+                </div>
+            </div>
 
-    <div class="text-end">
-        <strong>Total: @cartService.GetTotalPrice()</strong>
 
-        <form method="post" @onsubmit="CheckOutAsync">
-            <button type="submit" id="checkout-button" class="btn btn-primary">Checkout</button>
-        </form>
+            <form method="post" @onsubmit="CheckOutAsync">
+                <button type="submit" id="checkout-button" class="mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600">Checkout</button>
+            </form>
 
+        </div>
     </div>
 }
+
+
 else
 {
-    <p>Your shopping cart is empty.</p>
+    <div class="text-center my-60">
+        <p class="font-bold text-xl">Your shopping cart is empty.</p>
+        <p class="text-slate-500 text-md">Add products while you shop, so they'll be ready for checkout later.</p>
+    </div>
+
 }
+
+@if(dele == true)
+{
+    <DeleteConfirmation @ref="delete"/>
+}
+
 @if (!string.IsNullOrEmpty(error))
 {
     <p style="color: red;">@error</p>
 }
 @code {
     string error = "";
-
+    bool dele = false;
+    private List<Models.Product> productList;
+    [Inject] public IModalService Modal { get; set; } = default!;
+    private DeleteConfirmation delete;
     private async Task CheckOutAsync()
     {
         try
         {
-            var domain = navigationmanager.BaseUri.TrimEnd('/');
+            var authState = await AuthenticationStateProvider
+    .GetAuthenticationStateAsync();
+            var user = authState.User;
+            if (user.Identity is not null && user.Identity.IsAuthenticated)
+            {
 
-            var _lineItems = cartService.ShoppingCart.Select(p => new SessionLineItemOptions
-                {
-                    Quantity = p.Quantity,
-                    PriceData = new SessionLineItemPriceDataOptions
+                var domain = navigationmanager.BaseUri.TrimEnd('/');
+
+                var _lineItems = cartService.ShoppingCart.Select(p => new SessionLineItemOptions
                     {
-                        Currency = "eur",
-                        UnitAmountDecimal = p.Product.Price * 100,
-                        ProductData = new SessionLineItemPriceDataProductDataOptions
+                        Quantity = p.Quantity,
+                        PriceData = new SessionLineItemPriceDataOptions
                         {
-                            Name = p.Product.Name
+                            Currency = "eur",
+                            UnitAmountDecimal = p.Product.Price * 100,
+                            ProductData = new SessionLineItemPriceDataProductDataOptions
+                            {
+                                Name = p.Product.Name
+                            }
+
                         }
+                    }).ToList();
+                var options = new SessionCreateOptions
+                    {
+                        LineItems = _lineItems,
+                        Mode = "payment",
+                        SuccessUrl = domain + "/payment-succes?session-id={CHECKOUT_SESSION_ID}",
+                        CancelUrl = domain + "/shoppingcart"
+                    };
 
-                    }
-                }).ToList();
-            var options = new SessionCreateOptions
-                {
-                    LineItems = _lineItems,
-                    Mode = "payment",
-                    SuccessUrl = domain + "/payment-succes?session-id={CHECKOUT_SESSION_ID}",
-                    CancelUrl = domain + "/shoppingcart" 
-                };
+                var service = new SessionService();
+                Session session = await service.CreateAsync(options);
 
-            var service = new SessionService();
-            Session session = await service.CreateAsync(options);
+                navigationmanager.NavigateTo(session.Url);
+            }
+            else
+            {
 
-            navigationmanager.NavigateTo(session.Url);
+                // delete.Modal.Show<DeleteConfirmation>();
+                     Modal.Show<DeleteConfirmation>("Please login");
+            }
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
             error = $"{ex.Message}";
         }
 
-    } 
+    }
+
+
     private void RemoveFromCart(int productId)
     {
         cartService.RemoveFromCart(productId);
         toastService.ShowInfo($"removed from cart");
+    }
+    private void DecreaseQuantity(int productId)
+    {
+        cartService.DecreaseQuantity(productId);
+    }
 
+    private void IncreaseQuantity(int productId)
+    {
+        cartService.IncreaseQuantity(productId);
     }
 }

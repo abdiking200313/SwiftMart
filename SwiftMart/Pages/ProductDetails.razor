@@ -7,15 +7,16 @@
 @inject NavigationManager Navigation
 @inject ShoppingCartService cartService
 @inject IToastService toastService
-<PageTitle>@product1.Name</PageTitle>
+
 @if (product1 != null)
 {
+    <PageTitle>@product1.Name</PageTitle>
     <div class=" min-w-screen h-[calc(100vh-96px)] bg-base-300 flex items-center p-5 lg:p-10 overflow-hidden relative">
         <div class="w-full max-w-6xl rounded bg-white shadow-xl p-10 lg:p-20 mx-auto text-gray-800 relative md:text-left">
             <div class="md:flex items-center -mx-10">
                 <div class="w-full md:w-1/2 px-10 mb-10 md:mb-0">
                     <div class="relative bg-base-100">
-                        <img class="" src="@($"data:image/png;base64,{Convert.ToBase64String(product1.ImageData)}")" alt="Product Image" />
+                        <img class="max-h-80" src="@($"data:image/png;base64,{Convert.ToBase64String(product1.ImageData)}")" alt="Product Image" />
                     </div>
                 </div>
                 <div class="w-full md:w-1/2 px-10">

@@ -1,0 +1,109 @@
+﻿@page "/guessregister"
+@using System.ComponentModel.DataAnnotations
+@inject NavigationManager navi
+<PageTitle>Guest</PageTitle>
+
+<button type="button" class="px-5 py-2 text-sm text-gray-700 transition-colors duration-200 bg-white border rounded-lg gap-x-2" @onclick="GoBack">
+    <svg class="w-5 h-5 rtl:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
+    </svg>
+    <span>Go back</span>
+</button>
+<div>
+<div class="ml-40 mb-10">
+    <h1 class="text-4xl font-bold">Your billing address</h1>
+</div>
+<div class="ml-40  w-2/4">
+    <EditForm Model="guest">
+        <DataAnnotationsValidator />
+        <div class="grid grid-cols-2 gap-6 ">
+            <div>
+                <label class="mb-1 text-md tracking-wide ">First Name</label>
+                <div class="relative">
+                    <InputText @bind-Value="guest.FirstName" class="input input-bordered input-base-200 w-full" />
+                    <ValidationMessage For=@(() => guest.FirstName) class="text-red-500 " />
+                </div>
+            </div>
+            <div>
+                <label class="mb-1 text-md tracking-wide ">Last name</label>
+                <div class="relative">
+                    <InputText @bind-Value="guest.LastName" class="input input-bordered input-base-200 w-full" />
+                    <ValidationMessage For=@(() => guest.LastName) class="text-red-500 " />
+                </div>
+            </div>
+            <div class="col-span-full">
+                <label class="mb-1 text-md tracking-wide ">Email address</label>
+                <div class="relative">
+                    <InputText @bind-Value="guest.Email" class="input input-bordered input-base-200 w-full" />
+                    <ValidationMessage For=@(() => guest.Email) class="text-red-500 " />
+                </div>
+            </div>
+            <div class="col-span-full">
+                <label class="mb-1 text-md tracking-wide ">Mobile number</label>
+                <div class="relative">
+                    <InputText @bind-Value="guest.MobileNumber" class="input input-bordered input-base-200 w-full" />
+                    <ValidationMessage For=@(() => guest.MobileNumber) class="text-red-500 " />
+                </div>
+            </div>
+            <div class="col-span-full">
+                <label class="mb-1 text-md tracking-wide ">Postcode</label>
+                <div class="relative">
+                    <InputText @bind-Value="guest.Postcode" class="input input-bordered input-base-200 w-full" />
+                    <ValidationMessage For=@(() => guest.Postcode) class="text-red-500 " />
+                </div>
+            </div>
+            <div class="col-span-full">
+                <label class="mb-1 text-md tracking-wide ">Street name and house number</label>
+                <div class="relative">
+                    <InputText @bind-Value="guest.StreetNameAndHouseNumber" class="input input-bordered input-base-200 w-full" />
+                    <ValidationMessage For=@(() => guest.StreetNameAndHouseNumber) class="text-red-500 " />
+                </div>
+            </div>
+            <div class="col-span-full">
+                <label class="mb-1 text-md tracking-wide">City</label>
+                <div class="relative">
+                    <InputText @bind-Value="guest.City" class="input input-bordered input-base-200 w-full" />
+                    <ValidationMessage For=@(() => guest.City) class="text-red-500 " />
+                </div>
+            </div>
+            <div class="btn-primary col-span-full">
+                <button class="">Continue</button>
+            </div>
+        </div>
+    </EditForm>
+</div>
+</div>
+    @code {
+    private Guest guest = new Guest();
+
+    public class Guest
+    {
+        [Required(ErrorMessage = "First Name is required.")]
+        public string FirstName { get; set; }
+
+        [Required(ErrorMessage = "Last Name is required.")]
+        public string LastName { get; set; }
+
+        [Required(ErrorMessage = "Email is required.")]
+        [EmailAddress(ErrorMessage = "Invalid Email Address.")]
+        public string Email { get; set; }
+
+        [Required(ErrorMessage = "Mobile Number is required.")]
+        [RegularExpression(@"^\d{10}$", ErrorMessage = "Mobile Number must be 10 digits.")]
+        public string MobileNumber { get; set; }
+
+        [Required(ErrorMessage = "Postcode is required.")]
+        public string Postcode { get; set; }
+
+        [Required(ErrorMessage = "Street name and house number are required.")]
+        public string StreetNameAndHouseNumber { get; set; }
+
+        [Required(ErrorMessage = "City is required.")]
+        public string City { get; set; }
+    }
+
+    private void GoBack()
+    {
+        navi.NavigateTo("shoppingcart");
+    }
+}

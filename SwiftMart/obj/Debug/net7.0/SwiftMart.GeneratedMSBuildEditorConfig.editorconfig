@@ -26,6 +26,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRkUHJvZHVjdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Abdimalik/source/repos/SwiftMart/SwiftMart/Pages/DeleteConfirmation.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVsZXRlQ29uZmlybWF0aW9uLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Abdimalik/source/repos/SwiftMart/SwiftMart/Pages/GuessRegister.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3Vlc3NSZWdpc3Rlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Abdimalik/source/repos/SwiftMart/SwiftMart/Pages/PaymentSucces.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGF5bWVudFN1Y2Nlcy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 

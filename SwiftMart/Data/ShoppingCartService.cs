@@ -1,4 +1,4 @@
-﻿using Blazored.Toast.Services;
+﻿
 using SwiftMart.Models;
 
 namespace SwiftMart.Data
@@ -6,7 +6,7 @@ namespace SwiftMart.Data
     public class ShoppingCartService
     {
         private readonly SWdbcontext _dbContext;
-        IToastService toastService;
+
         public List<CartItem> ShoppingCart { get; private set; } = new List<CartItem>();
 
         public event Action OnCartUpdated;
@@ -26,7 +26,6 @@ namespace SwiftMart.Data
             }
             else
             {
-                // Retrieve product details from the database and create a new CartItem
                 var product = _dbContext.Products.Find(productId);
 
                 if (product != null)
@@ -40,22 +39,10 @@ namespace SwiftMart.Data
 
         public void RemoveFromCart(int productId)
         {
-            var itemToRemove = ShoppingCart.FirstOrDefault(item => item.ProductId == productId);
-
+            var itemToRemove = ShoppingCart.FirstOrDefault(item => item.Product.Id == productId);
             if (itemToRemove != null)
             {
-                var product = itemToRemove.Product;
-
-                if (itemToRemove.Quantity > 1)
-                {
-                    itemToRemove.Quantity -= 1;
-
-                }
-                else
-                {
-                    ShoppingCart.Remove(itemToRemove);
-                }
-
+                ShoppingCart.Remove(itemToRemove);
             }
         }
 
@@ -72,6 +59,27 @@ namespace SwiftMart.Data
         private void NotifyCartUpdated()
         {
             OnCartUpdated?.Invoke();
+        }
+
+        public void DecreaseQuantity(int productId)
+        {
+            var itemToDecrease = ShoppingCart.FirstOrDefault(item => item.Product.Id == productId);
+
+            if (itemToDecrease != null && itemToDecrease.Quantity > 1)
+            {
+                itemToDecrease.Quantity--;
+            }
+        }
+
+        // Method to increase the quantity of an item in the cart
+        public void IncreaseQuantity(int productId)
+        {
+            var itemToIncrease = ShoppingCart.FirstOrDefault(item => item.Product.Id == productId);
+
+            if (itemToIncrease != null)
+            {
+                itemToIncrease.Quantity++;
+            }
         }
     }
 }

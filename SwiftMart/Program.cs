@@ -1,3 +1,5 @@
+
+using Blazored.Modal;
 using Blazored.Toast;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -24,7 +26,7 @@ builder.Services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuth
 builder.Services.AddScoped<IEmailSender, SwiftMart.Data.Emailsender>();
 builder.Services.AddScoped<ShoppingCartService, ShoppingCartService>();
 builder.Services.AddBlazoredToast();
-builder.Services.AddBlazorBootstrap();
+builder.Services.AddBlazoredModal();
 builder.Services.Configure<IISServerOptions>(options =>
 {
     // 100 MB

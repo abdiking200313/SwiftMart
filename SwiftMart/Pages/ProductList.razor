@@ -24,7 +24,7 @@
 <div class=" mb-5 items-center bg-base-300 ">
     @if (products != null && products.Any())
     {
-        <div class="grid gap-6 px-10 grid-cols-4">
+        <div class="grid gap-1 grid-cols-4">
             @foreach (var product in products)
             {
                 <div class="card w-64 h-auto m-12 bg-base-100 shadow-xl  cursor-pointer transform motion-safe:hover:scale-110 " @onclick="() => NavigateToProductDetails(product.Id.ToString())">

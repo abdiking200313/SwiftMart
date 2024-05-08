@@ -304,3 +304,4 @@ C:\Users\Abdimalik\source\repos\SwiftMart\SwiftMart\bin\Debug\net7.0\Microsoft.E
 C:\Users\Abdimalik\source\repos\SwiftMart\SwiftMart\bin\Debug\net7.0\Microsoft.JSInterop.dll
 C:\Users\Abdimalik\source\repos\SwiftMart\SwiftMart\bin\Debug\net7.0\Blazored.Modal.dll
 C:\Users\Abdimalik\source\repos\SwiftMart\SwiftMart\bin\Debug\net7.0\Microsoft.JSInterop.WebAssembly.dll
+C:\Users\Abdimalik\source\repos\SwiftMart\SwiftMart\bin\Debug\net7.0\Blazored.SessionStorage.dll

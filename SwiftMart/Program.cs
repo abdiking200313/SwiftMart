@@ -1,5 +1,6 @@
 
 using Blazored.Modal;
+using Blazored.SessionStorage;
 using Blazored.Toast;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -27,6 +28,7 @@ builder.Services.AddScoped<IEmailSender, SwiftMart.Data.Emailsender>();
 builder.Services.AddScoped<ShoppingCartService, ShoppingCartService>();
 builder.Services.AddBlazoredToast();
 builder.Services.AddBlazoredModal();
+builder.Services.AddBlazoredSessionStorage();
 builder.Services.Configure<IISServerOptions>(options =>
 {
     // 100 MB

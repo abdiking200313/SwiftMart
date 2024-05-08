@@ -169,6 +169,11 @@ else
 
     }
 
+    protected override async Task OnInitializedAsync()
+    {
+        // Load cart data from session storage
+        await cartService.LoadCartFromSessionStorage();
+    }
 
     private void RemoveFromCart(int productId)
     {

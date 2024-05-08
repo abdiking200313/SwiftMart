@@ -1,4 +1,5 @@
 ﻿
+using Blazored.SessionStorage;
 using SwiftMart.Models;
 
 namespace SwiftMart.Data
@@ -6,17 +7,22 @@ namespace SwiftMart.Data
     public class ShoppingCartService
     {
         private readonly SWdbcontext _dbContext;
+        private readonly ISessionStorageService _sessionStorage;
+
+        private const string CartKey = "shoppingCart";
 
         public List<CartItem> ShoppingCart { get; private set; } = new List<CartItem>();
 
         public event Action OnCartUpdated;
 
-        public ShoppingCartService(SWdbcontext dbContext)
+        public ShoppingCartService(SWdbcontext dbContext, ISessionStorageService sessionStorage)
         {
             _dbContext = dbContext;
+            _sessionStorage = sessionStorage;
+            LoadCartFromSessionStorage();
         }
 
-        public void AddToCart(int productId, int quantity)
+        public async Task AddToCart(int productId, int quantity)
         {
             var existingCartItem = ShoppingCart.FirstOrDefault(item => item.ProductId == productId);
 
@@ -35,8 +41,21 @@ namespace SwiftMart.Data
             }
 
             NotifyCartUpdated();
+            await SaveCartToSessionStorage();
+        }
+        public async Task LoadCartFromSessionStorage()
+        {
+            if (await _sessionStorage.ContainKeyAsync(CartKey))
+            {
+                ShoppingCart = await _sessionStorage.GetItemAsync<List<CartItem>>(CartKey);
+                NotifyCartUpdated();
+            }
         }
 
+        private async Task SaveCartToSessionStorage()
+        {
+            await _sessionStorage.SetItemAsync(CartKey, ShoppingCart);
+        }
         public void RemoveFromCart(int productId)
         {
             var itemToRemove = ShoppingCart.FirstOrDefault(item => item.Product.Id == productId);

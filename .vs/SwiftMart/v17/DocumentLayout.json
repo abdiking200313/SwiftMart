@@ -3,16 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\Abdimalik\\source\\repos\\SwiftMart\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9648F535-67CF-4208-942D-879790B29CD0}|SwiftMart\\SwiftMart.csproj|c:\\users\\abdimalik\\source\\repos\\swiftmart\\swiftmart\\pages\\guessregister.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{9648F535-67CF-4208-942D-879790B29CD0}|SwiftMart\\SwiftMart.csproj|solutionrelative:swiftmart\\pages\\guessregister.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9648F535-67CF-4208-942D-879790B29CD0}|SwiftMart\\SwiftMart.csproj|c:\\users\\abdimalik\\source\\repos\\swiftmart\\swiftmart\\pages\\deleteconfirmation.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{9648F535-67CF-4208-942D-879790B29CD0}|SwiftMart\\SwiftMart.csproj|solutionrelative:swiftmart\\pages\\deleteconfirmation.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{9648F535-67CF-4208-942D-879790B29CD0}|SwiftMart\\SwiftMart.csproj|c:\\users\\abdimalik\\source\\repos\\swiftmart\\swiftmart\\pages\\_host.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9648F535-67CF-4208-942D-879790B29CD0}|SwiftMart\\SwiftMart.csproj|solutionrelative:swiftmart\\pages\\_host.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9648F535-67CF-4208-942D-879790B29CD0}|SwiftMart\\SwiftMart.csproj|c:\\users\\abdimalik\\source\\repos\\swiftmart\\swiftmart\\pages\\shoppingcart.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{9648F535-67CF-4208-942D-879790B29CD0}|SwiftMart\\SwiftMart.csproj|solutionrelative:swiftmart\\pages\\shoppingcart.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9648F535-67CF-4208-942D-879790B29CD0}|SwiftMart\\SwiftMart.csproj|c:\\users\\abdimalik\\source\\repos\\swiftmart\\swiftmart\\data\\shoppingcartservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9648F535-67CF-4208-942D-879790B29CD0}|SwiftMart\\SwiftMart.csproj|solutionrelative:swiftmart\\data\\shoppingcartservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9648F535-67CF-4208-942D-879790B29CD0}|SwiftMart\\SwiftMart.csproj|c:\\users\\abdimalik\\source\\repos\\swiftmart\\swiftmart\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9648F535-67CF-4208-942D-879790B29CD0}|SwiftMart\\SwiftMart.csproj|solutionrelative:swiftmart\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9648F535-67CF-4208-942D-879790B29CD0}|SwiftMart\\SwiftMart.csproj|c:\\users\\abdimalik\\source\\repos\\swiftmart\\swiftmart\\pages\\productdetails.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9648F535-67CF-4208-942D-879790B29CD0}|SwiftMart\\SwiftMart.csproj|solutionrelative:swiftmart\\pages\\productdetails.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9648F535-67CF-4208-942D-879790B29CD0}|SwiftMart\\SwiftMart.csproj|c:\\users\\abdimalik\\source\\repos\\swiftmart\\swiftmart\\pages\\productlist.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9648F535-67CF-4208-942D-879790B29CD0}|SwiftMart\\SwiftMart.csproj|solutionrelative:swiftmart\\pages\\productlist.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9648F535-67CF-4208-942D-879790B29CD0}|SwiftMart\\SwiftMart.csproj|c:\\users\\abdimalik\\source\\repos\\swiftmart\\swiftmart\\pages\\guessregister.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9648F535-67CF-4208-942D-879790B29CD0}|SwiftMart\\SwiftMart.csproj|solutionrelative:swiftmart\\pages\\guessregister.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -75,6 +91,84 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "_Host.cshtml",
+              "DocumentMoniker": "C:\\Users\\Abdimalik\\source\\repos\\SwiftMart\\SwiftMart\\Pages\\_Host.cshtml",
+              "RelativeDocumentMoniker": "SwiftMart\\Pages\\_Host.cshtml",
+              "ToolTip": "C:\\Users\\Abdimalik\\source\\repos\\SwiftMart\\SwiftMart\\Pages\\_Host.cshtml",
+              "RelativeToolTip": "SwiftMart\\Pages\\_Host.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAA6AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-08T17:06:26.075Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ProductDetails.razor",
+              "DocumentMoniker": "C:\\Users\\Abdimalik\\source\\repos\\SwiftMart\\SwiftMart\\Pages\\ProductDetails.razor",
+              "RelativeDocumentMoniker": "SwiftMart\\Pages\\ProductDetails.razor",
+              "ToolTip": "C:\\Users\\Abdimalik\\source\\repos\\SwiftMart\\SwiftMart\\Pages\\ProductDetails.razor",
+              "RelativeToolTip": "SwiftMart\\Pages\\ProductDetails.razor",
+              "ViewState": "AQIAABgAAAAAAAAAAAAAAEUAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-08T07:52:56.591Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ShoppingCart.razor",
+              "DocumentMoniker": "C:\\Users\\Abdimalik\\source\\repos\\SwiftMart\\SwiftMart\\Pages\\ShoppingCart.razor",
+              "RelativeDocumentMoniker": "SwiftMart\\Pages\\ShoppingCart.razor",
+              "ToolTip": "C:\\Users\\Abdimalik\\source\\repos\\SwiftMart\\SwiftMart\\Pages\\ShoppingCart.razor",
+              "RelativeToolTip": "SwiftMart\\Pages\\ShoppingCart.razor",
+              "ViewState": "AQIAAF0AAAAAAAAAAAAAAKoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-04T13:15:17.743Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ShoppingCartService.cs",
+              "DocumentMoniker": "C:\\Users\\Abdimalik\\source\\repos\\SwiftMart\\SwiftMart\\Data\\ShoppingCartService.cs",
+              "RelativeDocumentMoniker": "SwiftMart\\Data\\ShoppingCartService.cs",
+              "ToolTip": "C:\\Users\\Abdimalik\\source\\repos\\SwiftMart\\SwiftMart\\Data\\ShoppingCartService.cs",
+              "RelativeToolTip": "SwiftMart\\Data\\ShoppingCartService.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABUAAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-08T07:38:49.692Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Abdimalik\\source\\repos\\SwiftMart\\SwiftMart\\Program.cs",
+              "RelativeDocumentMoniker": "SwiftMart\\Program.cs",
+              "ToolTip": "C:\\Users\\Abdimalik\\source\\repos\\SwiftMart\\SwiftMart\\Program.cs",
+              "RelativeToolTip": "SwiftMart\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-08T07:30:15.566Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ProductList.razor",
+              "DocumentMoniker": "C:\\Users\\Abdimalik\\source\\repos\\SwiftMart\\SwiftMart\\Pages\\ProductList.razor",
+              "RelativeDocumentMoniker": "SwiftMart\\Pages\\ProductList.razor",
+              "ToolTip": "C:\\Users\\Abdimalik\\source\\repos\\SwiftMart\\SwiftMart\\Pages\\ProductList.razor",
+              "RelativeToolTip": "SwiftMart\\Pages\\ProductList.razor",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-08T07:28:27.052Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "GuessRegister.razor",
               "DocumentMoniker": "C:\\Users\\Abdimalik\\source\\repos\\SwiftMart\\SwiftMart\\Pages\\GuessRegister.razor",
               "RelativeDocumentMoniker": "SwiftMart\\Pages\\GuessRegister.razor",
@@ -83,31 +177,6 @@
               "ViewState": "AQIAAC0AAAAAAAAAAAAAAE8AAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-05-07T10:55:34.336Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ShoppingCart.razor",
-              "DocumentMoniker": "C:\\Users\\Abdimalik\\source\\repos\\SwiftMart\\SwiftMart\\Pages\\ShoppingCart.razor",
-              "RelativeDocumentMoniker": "SwiftMart\\Pages\\ShoppingCart.razor",
-              "ToolTip": "C:\\Users\\Abdimalik\\source\\repos\\SwiftMart\\SwiftMart\\Pages\\ShoppingCart.razor",
-              "RelativeToolTip": "SwiftMart\\Pages\\ShoppingCart.razor",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-04T13:15:17.743Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "DeleteConfirmation.razor",
-              "DocumentMoniker": "C:\\Users\\Abdimalik\\source\\repos\\SwiftMart\\SwiftMart\\Pages\\DeleteConfirmation.razor",
-              "RelativeDocumentMoniker": "SwiftMart\\Pages\\DeleteConfirmation.razor",
-              "ToolTip": "C:\\Users\\Abdimalik\\source\\repos\\SwiftMart\\SwiftMart\\Pages\\DeleteConfirmation.razor",
-              "RelativeToolTip": "SwiftMart\\Pages\\DeleteConfirmation.razor",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAARAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-07T07:01:32.656Z",
               "EditorCaption": ""
             }
           ]

@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "LiNxRBpCIu4zo0v2c1tvjgNe1fDv4RNtzxb0dejvSoHEYrE5VwRYY3kHLjpW8itv7RCY6ygoll5yIGdiKJ1h2Q==",
+  "dgSpecHash": "UKYsbWd8b/tenq7GjXRT3AgEnuwyRDu6TfvhCgprTLfeUpfEQQC9HXg0bMYuHB1yfyc9V4KZcbySoM2St6lfNw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Abdimalik\\source\\repos\\SwiftMart\\SwiftMart\\SwiftMart.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Abdimalik\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\Abdimalik\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
     "C:\\Users\\Abdimalik\\.nuget\\packages\\blazored.modal\\7.2.0\\blazored.modal.7.2.0.nupkg.sha512",
+    "C:\\Users\\Abdimalik\\.nuget\\packages\\blazored.sessionstorage\\2.4.0\\blazored.sessionstorage.2.4.0.nupkg.sha512",
     "C:\\Users\\Abdimalik\\.nuget\\packages\\blazored.toast\\4.2.1\\blazored.toast.4.2.1.nupkg.sha512",
     "C:\\Users\\Abdimalik\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\Abdimalik\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

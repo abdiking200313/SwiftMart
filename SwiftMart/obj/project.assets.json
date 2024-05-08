@@ -67,6 +67,18 @@
           "buildMultiTargeting/Blazored.Modal.props": {}
         }
       },
+      "Blazored.SessionStorage/2.4.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Components.Web": "7.0.1"
+        },
+        "compile": {
+          "lib/net7.0/Blazored.SessionStorage.dll": {}
+        },
+        "runtime": {
+          "lib/net7.0/Blazored.SessionStorage.dll": {}
+        }
+      },
       "Blazored.Toast/4.2.1": {
         "type": "package",
         "dependencies": {
@@ -4477,6 +4489,20 @@
         "lib/net6.0/Blazored.Modal.dll",
         "staticwebassets/Blazored.Modal.bundle.scp.css",
         "staticwebassets/BlazoredModal.razor.js"
+      ]
+    },
+    "Blazored.SessionStorage/2.4.0": {
+      "sha512": "e3XXH+zGGxDq1zC7YzLDD8mfvtoC6ESwTWOGD25H+FbPJlB7yQeL72hDY76tqkcrh98fh+y12r4BNhyQVV9YKw==",
+      "type": "package",
+      "path": "blazored.sessionstorage/2.4.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "blazored.sessionstorage.2.4.0.nupkg.sha512",
+        "blazored.sessionstorage.nuspec",
+        "icon.png",
+        "lib/net6.0/Blazored.SessionStorage.dll",
+        "lib/net7.0/Blazored.SessionStorage.dll"
       ]
     },
     "Blazored.Toast/4.2.1": {
@@ -12425,6 +12451,7 @@
   "projectFileDependencyGroups": {
     "net7.0": [
       "Blazored.Modal >= 7.2.0",
+      "Blazored.SessionStorage >= 2.4.0",
       "Blazored.Toast >= 4.2.1",
       "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 7.0.18",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 7.0.18",
@@ -12488,6 +12515,10 @@
           "Blazored.Modal": {
             "target": "Package",
             "version": "[7.2.0, )"
+          },
+          "Blazored.SessionStorage": {
+            "target": "Package",
+            "version": "[2.4.0, )"
           },
           "Blazored.Toast": {
             "target": "Package",
